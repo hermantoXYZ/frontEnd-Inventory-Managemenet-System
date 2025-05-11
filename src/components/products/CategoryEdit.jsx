@@ -10,7 +10,6 @@ import { toast } from "sonner";
 const CategoryEdit = () => {
   const [formData, setFormData] = useState({
     name: '',
-    description: ''
   });
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
@@ -36,8 +35,7 @@ const CategoryEdit = () => {
       });
 
       setFormData({
-        name: response.data.name,
-        description: response.data.description || ''
+        name: response.data.name
       });
       setLoading(false);
     } catch (error) {
@@ -112,20 +110,6 @@ const CategoryEdit = () => {
                 onChange={handleChange}
                 placeholder="Masukkan nama kategori"
                 required
-              />
-            </div>
-
-            <div className="space-y-2">
-              <label htmlFor="description" className="text-sm font-medium">
-                Deskripsi
-              </label>
-              <Textarea
-                id="description"
-                name="description"
-                value={formData.description}
-                onChange={handleChange}
-                placeholder="Masukkan deskripsi kategori"
-                rows={4}
               />
             </div>
 

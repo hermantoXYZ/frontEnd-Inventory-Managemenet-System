@@ -5,6 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
+import { Plus } from "lucide-react";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -76,7 +77,8 @@ const CategoryList = () => {
           <div className="flex justify-between items-center">
             <CardTitle>Daftar Kategori</CardTitle>
             <Link to="/categories/add">
-              <Button>Tambah Kategori</Button>
+              <Button>
+                <Plus className="h-4 2-4 mr-2"/>Tambah Kategori</Button>
             </Link>
           </div>
           <div className="flex gap-4 mt-4">
@@ -94,33 +96,34 @@ const CategoryList = () => {
           ) : error ? (
             <p className="text-red-500">{error}</p>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
               {categories.map((category) => (
-                <Card key={category.id}>
+                <Card key={category.id} className="hover:shadow-md transition-shadow">
                   <CardContent className="p-4">
-                    <div className="flex justify-between items-start">
-                      <div>
+                    <div className="flex flex-col space-x-7">
+                      <div className="space-y-2 mb-3">
                         <h3 className="text-lg font-semibold">{category.name}</h3>
-                        <p className="text-gray-600">{category.description}</p>
                       </div>
                       <div className='flex gap-2'>
-                      <Link to={`/categories/${category.slug}/edit`}>
+                        <Link to={`/categories/${category.slug}/edit`}>
                           <Button
-                            variant="ghost"
-                            size="icon"
-                            className="text-blue-500 hover:text-blue-700"
+                            variant="outline"
+                            size="lg"
+                            className="text-blue-500 hover:text-blue-700 hover:bg-blue-50"
                           >
-                            <Edit className="h-5 w-5" />
+                            <Edit className="h-4 w-4 mr-2" />
+                            Edit
                           </Button>
                         </Link>
-                      <Button
-                        variant="ghost"
-                        size="icon"
-                        className="text-red-500 hover:text-red-700"
-                        onClick={() => openDeleteDialog(category)}
-                      >
-                        <Trash2 className="h-5 w-5" />
-                      </Button>
+                        <Button
+                          variant="outline"
+                          size="lg"
+                          className="text-red-500 hover:text-red-700 hover:bg-red-50"
+                          onClick={() => openDeleteDialog(category)}
+                        >
+                          <Trash2 className="h-4 w-4 mr-2" />
+                          Hapus
+                        </Button>
                       </div>
                     </div>
                   </CardContent>
