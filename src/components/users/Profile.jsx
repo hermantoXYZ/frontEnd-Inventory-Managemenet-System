@@ -6,6 +6,9 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 
+const API_URL = import.meta.env.VITE_API_URL;
+
+
 const Profile = () => {
   const [profile, setProfile] = useState({
     email: '',
@@ -23,7 +26,7 @@ const Profile = () => {
   const fetchProfile = async () => {
     try {
       const token = localStorage.getItem('token'); // Ubah dari 'access_token' menjadi 'token'
-      const response = await axios.get('http://localhost:8000/api/profile/', {
+      const response = await axios.get(`${API_URL}/api/profile/`, {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -48,7 +51,7 @@ const Profile = () => {
 
     try {
       const token = localStorage.getItem('token'); // Ubah dari 'access_token' menjadi 'token'
-      await axios.put('http://localhost:8000/api/profile/', profile, {
+      await axios.put(`${API_URL}/api/profile/`, profile, {
         headers: {
           'Authorization': `Bearer ${token}`
         }

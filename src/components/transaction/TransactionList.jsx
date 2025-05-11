@@ -8,6 +8,8 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { toast } from "sonner";
 import { Receipt, Plus, Search, Filter, Calendar } from "lucide-react";
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 const TransactionList = () => {
   const [transactions, setTransactions] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -37,7 +39,7 @@ const TransactionList = () => {
       }
 
       // Buat URL dengan parameter filter
-      const url = new URL('http://localhost:8000/api/transactions/');
+      const url = new URL(`${API_URL}/api/transactions/`);
       if (searchTerm) {
         url.searchParams.append('search', searchTerm);
       }

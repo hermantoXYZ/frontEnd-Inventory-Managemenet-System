@@ -10,6 +10,8 @@ import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
 import { Plus, Minus, Receipt, ArrowLeft } from "lucide-react";
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 const CreateTransaction = () => {
   const [items, setItems] = useState([{ product: '', quantity: 1, unit_price: 0 }]);
   const [transactionType, setTransactionType] = useState('sale');
@@ -40,7 +42,7 @@ const CreateTransaction = () => {
         const token = localStorage.getItem('token');
         if (!token) return;
 
-        const response = await axios.get('http://localhost:8000/api/products/', {
+        const response = await axios.get(`${API_URL}/api/products/`, {
           headers: {
             'Authorization': `Bearer ${token}`
           }
@@ -137,7 +139,7 @@ const CreateTransaction = () => {
         items: formattedItems,
       };
 
-      const response = await axios.post('http://localhost:8000/api/transactions/', requestData, {
+      const response = await axios.post(`${API_URL}/api/transactions/`, requestData, {
         headers: {
           'Authorization': `Bearer ${token}`,
           'Content-Type': 'application/json',
