@@ -18,7 +18,7 @@ import {
 } from "@/components/ui/alert-dialog";
 import { Trash2, Edit } from "lucide-react";
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+const API_URL = import.meta.env.VITE_API_URL;
 
 const CategoryList = () => {
   const [categories, setCategories] = useState([]);

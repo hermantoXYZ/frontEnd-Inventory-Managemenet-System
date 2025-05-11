@@ -8,6 +8,9 @@ import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
 import { PlusCircle } from 'lucide-react';
 
+const API_URL = import.meta.env.VITE_API_URL;
+
+
 const CategoryAdd = () => {
   const [formData, setFormData] = useState({
     name: ''
@@ -34,7 +37,7 @@ const CategoryAdd = () => {
         return;
       }
 
-      await axios.post('http://localhost:8000/api/categories/', formData, {
+      await axios.post(`${API_URL}/api/categories/`, formData, {
         headers: {
           'Authorization': `Bearer ${token}`,
           'Content-Type': 'application/json'

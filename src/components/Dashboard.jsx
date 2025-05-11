@@ -9,6 +9,9 @@ import {
   PieChart as RechartPieChart, Pie, Cell, LineChart, Line
 } from 'recharts';
 
+const API_URL = import.meta.env.VITE_API_URL;
+
+
 const Dashboard = () => {
   const navigate = useNavigate();
   const [username, setUsername] = useState('');
@@ -42,17 +45,17 @@ const Dashboard = () => {
     setLoading(true);
     try {
       // Ambil jumlah produk
-      const productsResponse = await axios.get('http://localhost:8000/api/products/', {
+      const productsResponse = await axios.get(`${API_URL}/api/products/`, {
         headers: { 'Authorization': `Bearer ${token}` }
       });
       
       // Ambil kategori
-      const categoriesResponse = await axios.get('http://localhost:8000/api/categories/', {
+      const categoriesResponse = await axios.get(`${API_URL}/api/categories/`, {
         headers: { 'Authorization': `Bearer ${token}` }
       });
       
       // Ambil transaksi
-      const transactionsResponse = await axios.get('http://localhost:8000/api/transactions/', {
+      const transactionsResponse = await axios.get(`${API_URL}/api/transactions/`, {
         headers: { 'Authorization': `Bearer ${token}` }
       });
 

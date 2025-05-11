@@ -8,6 +8,8 @@ import { Label } from "@/components/ui/label";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Link } from'react-router-dom';
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 const Register = () => {
   useEffect(() => {
     document.title = 'Daftar Akun | CalenderApp';
@@ -31,7 +33,7 @@ const Register = () => {
 
 
     try {
-      const response = await axios.post('http://localhost:8000/api/register/', formData);
+      const response = await axios.post(`${API_URL}/api/register/`, formData);
       setSuccess('Registrasi berhasil! Anda akan dialihkan ke halaman login...');
       localStorage.setItem('token', response.data.access);
       // Menambahkan delay sebelum redirect

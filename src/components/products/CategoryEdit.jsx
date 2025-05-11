@@ -7,6 +7,9 @@ import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
 
+const API_URL = import.meta.env.VITE_API_URL;
+
+
 const CategoryEdit = () => {
   const [formData, setFormData] = useState({
     name: '',
@@ -28,7 +31,7 @@ const CategoryEdit = () => {
         return;
       }
 
-      const response = await axios.get(`http://localhost:8000/api/categories/${slug}/`, {
+      const response = await axios.get(`${API_URL}/api/categories/${slug}/`, {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -63,7 +66,7 @@ const CategoryEdit = () => {
         return;
       }
 
-      await axios.put(`http://localhost:8000/api/categories/${slug}/`, formData, {
+      await axios.put(`${API_URL}/api/categories/${slug}/`, formData, {
         headers: {
           'Authorization': `Bearer ${token}`,
           'Content-Type': 'application/json'

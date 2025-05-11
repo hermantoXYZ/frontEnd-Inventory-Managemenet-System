@@ -6,6 +6,8 @@ import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
 import { useNavigate } from 'react-router-dom';
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 const ProductDetail = () => {
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -26,7 +28,7 @@ const ProductDetail = () => {
         return;
       }
 
-      const response = await axios.get(`http://localhost:8000/api/products/${slug}/`, {
+      const response = await axios.get(`${API_URL}/api/products/${slug}/`, {
         headers: {
           'Accept': 'application/json',
           'Authorization': `Bearer ${token}`

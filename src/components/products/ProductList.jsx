@@ -5,6 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
+const API_URL = import.meta.env.VITE_API_URL;
 
 const ProductList = () => {
   const [products, setProducts] = useState([]);
@@ -26,7 +27,7 @@ const ProductList = () => {
       }
 
       // Perbaikan URL untuk pencarian
-      const url = new URL('http://localhost:8000/api/products/');
+      const url = new URL(`${API_URL}http://localhost:8000/api/products/`);
       if (searchTerm) {
         url.searchParams.append('search', searchTerm);
       }
