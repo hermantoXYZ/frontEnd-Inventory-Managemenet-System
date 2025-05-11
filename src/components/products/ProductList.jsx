@@ -27,7 +27,7 @@ const ProductList = () => {
       }
 
       // Perbaikan URL untuk pencarian
-      const url = new URL(`${API_URL}http://localhost:8000/api/products/`);
+      const url = new URL(`${API_URL}/api/products/`);
       if (searchTerm) {
         url.searchParams.append('search', searchTerm);
       }
