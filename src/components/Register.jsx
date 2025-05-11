@@ -64,7 +64,7 @@ const Register = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center">
+    <div className="min-h-screen flex items-center justify-center m-5">
       <Card className="w-[400px]">
         <CardHeader>
           <CardTitle className="text-2xl font-bold text-center">Register</CardTitle>
