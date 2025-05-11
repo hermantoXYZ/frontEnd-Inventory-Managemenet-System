@@ -18,6 +18,8 @@ import {
 } from "@/components/ui/alert-dialog";
 import { Trash2, Edit } from "lucide-react";
 
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+
 const CategoryList = () => {
   const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -33,7 +35,7 @@ const CategoryList = () => {
   const fetchCategories = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.get(`http://localhost:8000/api/categories/?name=${searchTerm}`, {
+      const response = await axios.get(`${API_URL}/api/categories/?name=${searchTerm}`, {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -49,7 +51,7 @@ const CategoryList = () => {
   const handleDelete = async () => {
     try {
       const token = localStorage.getItem('token');
-      await axios.delete(`http://localhost:8000/api/categories/${selectedCategory.slug}/`, {
+      await axios.delete(`${API_URL}/api/categories/${selectedCategory.slug}/`, {
         headers: {
           'Authorization': `Bearer ${token}`
         }

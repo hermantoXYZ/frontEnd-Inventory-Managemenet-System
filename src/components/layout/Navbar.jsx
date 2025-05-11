@@ -41,7 +41,7 @@ const Navbar = () => {
               {isAuthenticated ? (
                 <>
                   <Link to="/profile">
-                    <Button variant="ghost" className='bg-green-900 text-white'>
+                    <Button variant="ghost">
                       <User className="h-4 w-4 mr-2" />
                       Profile
                     </Button>
@@ -68,7 +68,7 @@ const Navbar = () => {
 
       {/* Sidebar dan Overlay */}
       <div className={`md:hidden fixed inset-0 z-20 transition-opacity ${sidebarOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
-        <div className="absolute inset-0 bg-black bg-opacity-50" onClick={toggleSidebar}></div>
+        <div className="absolute inset-0 bg-opacity-50" onClick={toggleSidebar}></div>
       </div>
 
       <aside className={`fixed top-0 left-0 z-30 h-full w-64 bg-white dark:bg-gray-800 shadow-lg transform transition-all duration-300 ease-in-out ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'}`}>
